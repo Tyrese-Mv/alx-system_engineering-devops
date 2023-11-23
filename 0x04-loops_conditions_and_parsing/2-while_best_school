@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+myvar=1
+while [ $myvar -le 10 ]
+do
+	echo "Best School"
+	myvar=$(( $myvar+1 ))
+done
