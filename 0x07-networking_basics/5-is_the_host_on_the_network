@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# pings 5 times using first argument
+
+if [ $# -eq 1 ];
+then 
+	for ((i=1; i<=5; i++)); do
+		ping "$1"
+	done
+else
+	echo "Usage: $0 {IP_ADDRESS}"
+fi
+
