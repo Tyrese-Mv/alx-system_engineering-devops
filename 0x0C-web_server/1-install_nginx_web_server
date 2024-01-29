@@ -3,7 +3,7 @@
 
 
 sudo apt -y update
-sudo apt -y upgrade
+# sudo apt -y upgrade
 sudo apt -y install nginx
 sudo service nginx start
 sudo chown -R "$USER":"$USER" /var/www/html
