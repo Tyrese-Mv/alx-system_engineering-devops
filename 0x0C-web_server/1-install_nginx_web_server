@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 # Install nginx web server
-# sudo apt -y update
-# sudo apt -y upgrade
-# sudo apt -y install nginx
-# sudo service nginx start
-# sudo chown -R "$USER":"$USER" /var/www/html
-# sudo chmod -R 755 /var/www
-# sudo echo 'Hello World!' | tee /var/www/html/index.nginx-debian.html
+
 
 sudo apt -y update
-sudo apt install nginx -y
-sudo sed -i 's/\blisten 80\b/listen 80 default_server/' /etc/ngix/sites-available/default
-echo "<html><head><title>Hello World!</title></head><body>Hello World!</body></html>" | sudo tee /var/www/html/index.html
-sudo /etc/init.d/ngix restart
-curl -s 127.0.0.1 | grep "Hello World!"
+sudo apt -y upgrade
+sudo apt -y install nginx
+sudo service nginx start
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+sudo echo 'Hello World!' | tee /var/www/html/index.nginx-debian.html
+
