@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#writes "Best School" on the terminal
+while IFS=':' read -r username x uid gid gecos homedir shell; do
+    echo "The user $username is part of the $gid gang, lives in $homedir and rides $shell. $uid's place is protected by the passcode x, more info about the user here: $gecos"
+done < /etc/passwd
