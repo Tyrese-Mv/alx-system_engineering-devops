@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#writes "Best School" on the terminal
+while IFS=':' read -r username x uid gid gecos homedir shell; do
+    echo "$username:$uid:$homedir"
+done < /etc/passwd
