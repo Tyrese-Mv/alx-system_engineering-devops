@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#writes "Best School" on the terminal
+counter=0
+until [ $counter -ge 10 ]
+do
+    echo "Best School"
+    ((counter++))
+done
