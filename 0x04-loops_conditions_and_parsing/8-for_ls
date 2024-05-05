@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#writes "Best School" on the terminal
+for file in *; do
+    if [ -f "$file" ] && [[ $file =~ .*-.* ]]; then
+        echo "${file#*-}"
+    fi
+done
