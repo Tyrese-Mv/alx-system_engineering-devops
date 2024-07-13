@@ -2,6 +2,7 @@
 # Install nginx web server
 
 
+ssh -i ~/.ssh/school ubuntu@52.91.135.223
 sudo apt -y update
 # sudo apt -y upgrade
 sudo apt -y install nginx
@@ -9,4 +10,3 @@ sudo service nginx start
 sudo chown -R "$USER":"$USER" /var/www/html
 sudo chmod -R 755 /var/www
 sudo echo 'Hello World!' | tee /var/www/html/index.nginx-debian.html
-
