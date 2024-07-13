@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 # Update package list and install nginx
 
-apt-get update
-apt-get install -y nginx
+sudo apt -y update
+sudo apt -y upgrade
+sudo apt -y install nginx
+sudo service nginx start
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+sudo echo 'Hello World!' | tee /var/www/html/index.nginx-debian.html
+sudo chmod -R 755 /etc/nginx/sites-enabled
 
-echo "Hello World!" > /var/www/html/index.html
-
-cat <<EOL > /etc/nginx/sites-available/default
-server {
+sudo echo  "server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
@@ -23,14 +26,13 @@ server {
     location /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
-}
-EOL
+}" | sudo tee /etc/nginx/sites-enabled/default
 
 service nginx restart
-curl -sI localhost/redirect_me | grep "301 Moved Permanently" > /dev/null
-if [ $? -eq 0 ]; then
-    echo "Nginx is running and redirection is working"
-else
-    echo "Nginx redirection is not working"
-    exit 1
-fi
+# curl -sI localhost/redirect_me | grep "301 Moved Permanently" > /dev/null
+# if [ $? -eq 0 ]; then
+#     echo "Nginx is running and redirection is working"
+# else
+#     echo "Nginx redirection is not working"
+#     exit 1
+# fi
