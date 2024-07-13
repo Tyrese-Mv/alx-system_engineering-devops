@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-
 # Update package list and install nginx
+
 apt-get update
 apt-get install -y nginx
 
-# Create a custom index.html file
 echo "Hello World!" > /var/www/html/index.html
 
-# Create a new configuration file for redirection
 cat <<EOL > /etc/nginx/sites-available/default
 server {
     listen 80 default_server;
@@ -28,13 +26,8 @@ server {
 }
 EOL
 
-# Restart nginx without using systemctl
 service nginx restart
-
-# Check if nginx is running and serving the correct content
 curl -sI localhost/redirect_me | grep "301 Moved Permanently" > /dev/null
-
-# Verify that curl succeeded
 if [ $? -eq 0 ]; then
     echo "Nginx is running and redirection is working"
 else
